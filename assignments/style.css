@@ -1,6 +1,27 @@
-body{
+  body{
   background-color:#dce9fa;
   padding:50px;
   margin:auto;
+
 }
+h1{
+ font-family:'Segoe UI';
+ text-align:center;
+
+}
+.core{
+  background: white;
+  padding:15px;
+  border-radius: 20px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;    
+  list-style-type: none;
+}
+ol{
+ margin: 0 auto;
+ padding: 0;          
+  max-width: 500px;
+}
+
 
