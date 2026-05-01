@@ -3,7 +3,21 @@
     <title>Skill Matrix</title>
      <link rel="stylesheet" href="style.css">
     <script>
-      
+ 
+        function greetUser() {
+            let name = "";
+  
+            while (name === "" || name === null) {
+                name = prompt("Please enter your name to view the Skill Matrix:");
+                
+                if (name === "" || name === null) {
+                    alert("Name cannot be empty! Please provide a name to continue."); // Alert
+                }
+            }
+            
+            alert("Welcome, " + name + "! Here is your technical breakdown."); // Success Alert
+        }
+        window.onload = greetUser;
     </script>
   </head>
   <body>
