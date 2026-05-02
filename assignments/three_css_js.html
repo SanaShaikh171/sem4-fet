@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Feedback Form</title>
+  <style>
+     * {
+  box-sizing: border-box;
+}
+
+.form { 
+  width: 100%;
+  border-radius: 4px;
+  border: 2px solid #04AA6D;;
+  background-color:  #f2f2f2;
+  padding: 50px;
+}
+
+feedbackForm {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+label {
+  min-width: 48%;
+  margin-bottom: 10px;
+}
+
+input[type=text], select {
+  min-width: 45%;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+textarea {
+  min-width: 45%;
+  height: 150px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+  label,
+  input[type=text],
+  input[type=submit],
+  select, textarea {
+    flex: 100%;
+    min-width: 100%;
+  }
+}
+  </style>
+</head>
+<body>
+
+<h1 >FeedBack Form</h1>
+<div class="form">
+<form id="feedbackForm">
+  <label for="fname">First name:</label><br>
+  <input type="text" id="fname" name="fname" required><br>
+  
+  <label for="lname">Last name:</label><br>
+  <input type="text" id="lname" name="lname" required><br> 
+
+  <p>Enter Your favourite Core Language</p>
+  <input type="radio" id="html" name="fav_language" value="HTML">
+  <label for="html">HTML</label><br>
+  <input type="radio" id="css" name="fav_language" value="CSS">
+  <label for="css">CSS</label><br>
+  <label for="rate">Give ratings on your understanding:</label>
+  <select id="rate" name="rate">
+    <option value="Excellent">Excellent</option>
+    <option value="Good">Good</option>
+    <option value="Average">Average</option>
+  </select>
+
+  <br>
+  <p>Where you can apply it</p>
+  <input type="checkbox" id="lang1" name="application" value="Websites">
+  <label for="lang1"> Websites</label><br>
+  <input type="checkbox" id="lang2" name="application" value="Animation">
+  <label for="lang2">Animation</label><br>
+
+  <br>
+  <label for="message">Why do you like it:</label><br><br>
+  <textarea id="message" name="message" placeholder="Write something.." required></textarea>
+  <br><br>
+  
+  <input type="submit" value="Submit">  
+</form>
+</div>
+<hr>
+<div id="responseContainer"></div>
+  <script>
+  const myForm = document.getElementById('feedbackForm');
+  const responseContainer = document.getElementById('responseContainer');
+
+  myForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+    const fname = document.getElementById('fname').value;
+    const lname = document.getElementById('lname').value;
+    const rating = document.getElementById('rate').value;
+    const message = document.getElementById('message').value;
+    const favLang = document.querySelector('input[name="fav_language"]:checked')?.value || "None selected";
+    const apps = [];
+    document.querySelectorAll('input[name="application"]:checked').forEach((checkbox) => {
+      apps.push(checkbox.value);
+    });
+
+    responseContainer.innerHTML = `
+      <div style="border: 2px solid black; padding: 15px; margin-top: 20px; background-color: #f0f0f0;">
+        <h2>Form Results:</h2>
+        <p><strong>Name:</strong> ${fname} ${lname}</p>
+        <p><strong>Favorite Language:</strong> ${favLang}</p>
+        <p><strong>Rating:</strong> ${rating}</p>
+        <p><strong>Application(s):</strong> ${apps.join(', ') || "None selected"}</p>
+        <p><strong>Reason:</strong> ${message}</p>
+      </div>
+    `;
+  });
+</script>
+
+</body>
+</html>
