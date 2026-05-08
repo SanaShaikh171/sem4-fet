@@ -1,152 +1,162 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Feedback Form</title>
-  <style>
- body{
-   background-color:#FFFAFA;
-   margin: 0;
-    display: flex;            
-    flex-direction: column;   
-    align-items: center;     
-    justify-content: center;   /
-    min-height: 100vh;      
-    padding: 20px
-  }
-   h1{
-    text-align:center;
-  }
-  * {
-  box-sizing: border-box;
-}
+    <title>Feedback Form</title>
+    <style>
+       
+        body {
+            background-color: #FFFAFA;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            font-family: sans-serif;
+        }
 
-.form { 
-  max-width 200px;
-  width: 100%;
-  border-radius: 14px;
-  border: 2px solid #D2B48C;
-  background-color:  FloralWhite;
-  padding: 50px;
-}
+        h1 { text-align: center; color: #8B0000; }
 
-#feedbackForm {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
+        * { box-sizing: border-box; }
 
-label,p {
-  min-width: 48%;
-  margin-bottom: 10px;
-  color:#8B0000;
-}
+      
+        .form {
+            max-width: 500px; 
+            width: 100%;
+            border-radius: 14px;
+            border: 2px solid #D2B48C;
+            background-color: FloralWhite;
+            padding: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
 
-input[type=text], select {
-  min-width: 45%;
-  margin-bottom: 20px;
-  border: 1px solid #A0522D;
-  border-radius: 4px;
-  padding: 10px;
-}
 
-textarea {
-  min-width: 50%;
-  height: 120px;
-  margin-bottom: 10px;
-  border: 1px solid #A0522D;
-  border-radius: 4px;
-  padding: 10px;
-}
+        fieldset {
+            border: 1px solid #D2B48C;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            padding: 15px;
+        }
 
-input[type=submit] {
-  width: 100%;
-  background-color:#D2691E;
-  color: white;
-  padding: 14px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-    .home-btn{
-      align-self: flex-start
-background-color:#D2691E;
-border: none;
-border-radius:10px;
-cursor:arrow;
-color:white;
-text-decoration:none;
-padding:10px;
-}
-  </style>
+        legend {
+            font-weight: bold;
+            color: #8B0000;
+            padding: 0 10px;
+        }
+
+        label { color: #8B0000; margin-bottom: 5px; display: inline-block; }
+
+        input[type=text], select, textarea {
+            width: 100%;
+            margin-bottom: 15px;
+            border: 1px solid #A0522D;
+            border-radius: 4px;
+            padding: 10px;
+        }
+
+        input[type=submit] {
+            width: 100%;
+            background-color: #D2691E;
+            color: white;
+            padding: 14px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .home-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #D2691E;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+    </style>
 </head>
 <body>
-<a href="https://sanashaikh171.github.io/sem4-fet/" class="home-btn">Home</a>
-<h1 >FeedBack Form</h1>
-<div class="form">
-<form id="feedbackForm">
-  <label for="fname">First name:</label><br>
-  <input type="text" id="fname" name="fname" required><br>
-  
-  <label for="lname">Last name:</label><br>
-  <input type="text" id="lname" name="lname" required><br> 
 
-  <p>Enter Your favourite Core Language</p>
-  <input type="radio" id="html" name="fav_language" value="HTML">
-  <label for="html">HTML</label><br>
-  <input type="radio" id="css" name="fav_language" value="CSS">
-  <label for="css">CSS</label><br>
-  <label for="rate">Give ratings on your understanding:</label>
-  <select id="rate" name="rate">
-    <option value="Excellent">Excellent</option>
-    <option value="Good">Good</option>
-    <option value="Average">Average</option>
-  </select>
+    <a href="https://sanashaikh171.github.io/sem4-fet/" class="home-btn">Home</a>
 
-  <br>
-  <p>Application Areas</p>
-  <input type="checkbox" id="lang1" name="application" value="Websites">
-  <label for="lang1"> Websites</label><br>
-  <input type="checkbox" id="lang2" name="application" value="Animation">
-  <label for="lang2">Animation</label><br>
-  <br>
-  <label for="message">Why do you like it:</label><br><br>
-  <textarea id="message" name="message" placeholder="Write something.." required></textarea>
-  <br><br>
-   <input type="submit" value="Submit"> 
-  
-</form>
-</div>
-<hr>
-<div id="responseContainer"></div>
-  <script>
-  const myForm = document.getElementById('feedbackForm');
-  const responseContainer = document.getElementById('responseContainer');
+    <h1>Feedback Form</h1>
 
-  myForm.addEventListener('submit', function(event) {
-    event.preventDefault();
-    const fname = document.getElementById('fname').value;
-    const lname = document.getElementById('lname').value;
-    const rating = document.getElementById('rate').value;
-    const message = document.getElementById('message').value;
-    const favLang = document.querySelector('input[name="fav_language"]:checked')?.value || "None selected";
-    const apps = [];
-    document.querySelectorAll('input[name="application"]:checked').forEach((checkbox) => {
-      apps.push(checkbox.value);
-    });
+    <div class="form">
+        <form id="feedbackForm">
+            <label for="fname">First name:</label>
+            <input type="text" id="fname" name="fname" required>
 
-    responseContainer.innerHTML = `
-      <div style="border: 2px solid black; padding: 15px; margin-top: 20px; background-color: #f0f0f0;">
-        <h2>Form Results:</h2>
-        <p><strong>Name:</strong> ${fname} ${lname}</p>
-        <p><strong>Favorite Language:</strong> ${favLang}</p>
-        <p><strong>Rating:</strong> ${rating}</p>
-        <p><strong>Application(s):</strong> ${apps.join(', ') || "None selected"}</p>
-        <p><strong>Reason:</strong> ${message}</p>
-      </div>
-    `;
-  });
-</script>
+            <label for="lname">Last name:</label>
+            <input type="text" id="lname" name="lname" required>
 
+            <fieldset>
+                <legend>Favourite Core Language</legend>
+                <input type="radio" id="html" name="fav_language" value="HTML">
+                <label for="html">HTML</label>
+                <input type="radio" id="css" name="fav_language" value="CSS">
+                <label for="css">CSS</label>
+            </fieldset>
+
+            <label for="rate">Rating:</label>
+            <select id="rate" name="rate">
+                <option value="Excellent">Excellent</option>
+                <option value="Good">Good</option>
+                <option value="Average">Average</option>
+            </select>
+
+            <fieldset>
+                <legend>Application Areas</legend>
+                <input type="checkbox" id="lang1" name="application" value="Websites">
+                <label for="lang1">Websites</label>
+                <input type="checkbox" id="lang2" name="application" value="Animation">
+                <label for="lang2">Animation</label>
+            </fieldset>
+
+            <label for="message">Why do you like it:</label>
+            <textarea id="message" name="message" placeholder="Write something.." required></textarea>
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <div id="responseContainer"></div>
+
+    <script>
+        const myForm = document.getElementById('feedbackForm');
+        const responseContainer = document.getElementById('responseContainer');
+
+        myForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const fname = document.getElementById('fname').value;
+            const lname = document.getElementById('lname').value;
+            const rating = document.getElementById('rate').value;
+            const message = document.getElementById('message').value;
+
+     
+            const favLang = document.querySelector('input[name="fav_language"]:checked')?.value || "None";
+
+       
+            const checkboxes = document.querySelectorAll('input[name="application"]:checked');
+            let apps = [];
+            for (let i = 0; i < checkboxes.length; i++) {
+                apps.push(checkboxes[i].value);
+            }
+
+            responseContainer.innerHTML = `
+                <div style="border: 2px solid #D2B48C; padding: 20px; margin-top: 20px; background-color: FloralWhite; border-radius: 14px; width: 100%; max-width: 500px;">
+                    <h2 style="color: #8B0000; margin-top: 0;">Submission Success!</h2>
+                    <p><strong>Name:</strong> ${fname} ${lname}</p>
+                    <p><strong>Language:</strong> ${favLang}</p>
+                    <p><strong>Applications:</strong> ${apps.join(', ') || "None"}</p>
+                    <p><strong>Rating:</strong> ${rating}</p>
+                    <p><strong>Feedback:</strong> ${message}</p>
+                </div>
+            `;
+        });
+    </script>
 </body>
 </html>
