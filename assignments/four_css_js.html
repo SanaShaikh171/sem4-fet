@@ -1,1 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ATM Loop Demo</title>
+  <style>
 
+    body {
+      font-family: 'Segoe UI', Roboto, sans-serif;
+     background: linear-gradient(to bottom right, #6a11cb, #2575fc);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .atm-container {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 50px 40px;
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      width: 100%;
+      max-width: 350px;
+    }
+
+    h2 {
+      color: #1e3c72;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #636e72;
+      margin-bottom: 30px;
+    }
+
+    button {
+      background: linear-gradient(to right, #00b09b, #96c93d);
+      color: white;
+      border: none;
+      padding: 16px 32px;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 50px;
+      cursor: pointer;
+      width: 100%;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 176, 155, 0.4);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="atm-container">
+    <h2>Secure ATM</h2>
+    <p>Click the button below to start your transaction loop.</p>
+    <button onclick="startATM()">Open ATM Menu</button>
+  </div>
+
+  <script>
+    function startATM() {
+      let balance = 500;
+      let choice;
+      do {
+        choice = prompt("ATM MENU\n1. Check Balance\n2. Withdraw $100\n3. Exit");
+
+        if (choice === "1") {
+          alert("Current Balance: $" + balance);
+        } 
+        else if (choice === "2") {
+          if (balance >= 100) {
+            let withdrawn = 0;
+            while (withdrawn < 100) {
+              withdrawn += 20; 
+              console.log("Dispensing... $" + withdrawn);
+            }
+            balance -= 100;
+            alert("Success! New balance: $" + balance);
+          } else {
+            alert("Error: Insufficient funds!");
+          }
+        }
+      } while (choice !== "3" && choice !== null);
+
+      alert("Thank you for using our ATM!");
+    }
+  </script>
+
+</body>
+</html>
