@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ATM Loop Demo</title>
   <style>
 
@@ -51,16 +53,34 @@
       transform: translateY(-2px);
       box-shadow: 0 6px 20px rgba(0, 176, 155, 0.4);
     }
+    .home-btn {
+            position: fixed;
+            top: 20px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            padding: 8px 20px;
+            border-radius: 30px;
+            border: 1.5px solid rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            transition: 0.3s;
+        }
+
+        .home-btn:hover {
+            background: white;
+            color: #6a11cb;
+        }
   </style>
 </head>
 <body>
-
+  <a href="https://sanashaikh171.github.io/sem4-fet/" class="home-btn">Home</a>
   <div class="atm-container">
     <h2>Secure ATM</h2>
     <p>Click the button below to start your transaction loop.</p>
     <button onclick="startATM()">Open ATM Menu</button>
   </div>
-
   <script src="atm_logic.js"> </script>
 </body>
 </html>
