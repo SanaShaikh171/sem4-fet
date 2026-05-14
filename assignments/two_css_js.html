@@ -1,7 +1,29 @@
 <html>
   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skill Matrix</title>
-     <link rel="stylesheet" href="style.css">
+     <style>
+          .home-btn {
+            position: fixed;
+            top: 20px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            padding: 8px 20px;
+            border-radius: 30px;
+            border: 1.5px solid rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            transition: 0.3s;
+        }
+
+        .home-btn:hover {
+            background: white;
+            color: #6a11cb;
+        }
+     </style>
     <script>
 function validateSkills() {
         const availableLanguages = ["C", "HTML", "JAVA", "PYTHON"];
@@ -23,7 +45,7 @@ function validateSkills() {
     </script>
   </head>
   <body>
-     <a href="https://sanashaikh171.github.io/sem4-fet/">Back To Home Page</a>
+     <a href="https://sanashaikh171.github.io/sem4-fet/" class="home-btn">Back To Home Page</a>
     <h1>My Technical Skills Matrix</h1>
     <ol>
      <li class="core">Core Languages
@@ -42,6 +64,5 @@ function validateSkills() {
       </ul>
      </li>
     </ol>
-
   </body>
 </html>
