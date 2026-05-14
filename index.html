@@ -1,48 +1,86 @@
-<html>
+<html >
 <head>
-   <title>Home Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
     <style>
         body {
-background: linear-gradient(135deg, #667eea 0%, #764bb2 100%);
-           font-family: sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764bb2 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             text-align: center;
-           padding: 50px;
-           color:white
+            padding: 50px 20px;
+            color: white;
+            margin: 0;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-size: 1.8rem;
+        }
+        .intro-text {
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        .main-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            max-width: 1100px;
+            margin: 0 auto;  
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            transition: transform 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+        }
+
+        h3 {
+            margin-top: 0;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            line-height: 1.8;
+            margin: 10px 0;
+            font-size: 0.95rem;
         }
         a {
-    color: #9ad4ed;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    font-weight: bold;
-}
-
-a:hover {
-    color: #ffffff;
-    text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.8);
-    padding-left: 5px; 
-}
-.main-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-        .container{
-        background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 25px;
-            margin-bottom:20px;
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            color: #9ad4ed;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            font-weight: bold;
+            display: inline-block;
+           padding: 5px 10px;
+            border-radius: 4px;
+             
         }
-        p{line-height: 1.6;}
+        a:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.15);
+            text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.5);
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 30px 15px;
+            }
+        }
     </style>
 </head>
 <body>
     <h1>Frontend Technologies</h1>
-   <p> Welcome! This homepage contains all my frontend engineering assignments for Semester 4.</p>
+   <p class="intro-text"> Welcome! This homepage contains all my frontend engineering assignments for Semester 4.</p>
       <div class="main-grid">
    <div class="container">
    <h3>HTML Assignments:</h3>
